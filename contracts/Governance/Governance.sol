@@ -7,6 +7,8 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contr
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorVotes.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorVotesQuorumFraction.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorTimelockControl.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/utils/IVotes.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/TimelockController.sol";
 
 contract Governance is
     Governor,
@@ -69,15 +71,6 @@ contract Governance is
         return super.state(proposalId);
     }
 
-    function propose(
-        address[] memory targets,
-        uint256[] memory values,
-        bytes[] memory calldatas,
-        string memory description
-    ) public override(Governor) returns (uint256) {
-        return super.propose(targets, values, calldatas, description);
-    }
-
     function _executor()
         internal
         view
@@ -85,46 +78,6 @@ contract Governance is
         returns (address)
     {
         return super._executor();
-    }
-
-    function cancel(
-        address[] memory targets,
-        uint256[] memory values,
-        bytes[] memory calldatas,
-        bytes32 descriptionHash
-    )
-        public
-        override(Governor, GovernorTimelockControl)
-        returns (uint256)
-    {
-        return super.cancel(targets, values, calldatas, descriptionHash);
-    }
-
-    function execute(
-        address[] memory targets,
-        uint256[] memory values,
-        bytes[] memory calldatas,
-        bytes32 descriptionHash
-    )
-        public
-        payable
-        override(Governor, GovernorTimelockControl)
-        returns (uint256)
-    {
-        return super.execute(targets, values, calldatas, descriptionHash);
-    }
-
-    function queue(
-        address[] memory targets,
-        uint256[] memory values,
-        bytes[] memory calldatas,
-        bytes32 descriptionHash
-    )
-        public
-        override(Governor, GovernorTimelockControl)
-        returns (uint256)
-    {
-        return super.queue(targets, values, calldatas, descriptionHash);
     }
 
     // Additional required overrides for functions with conflicts
@@ -141,9 +94,10 @@ contract Governance is
         uint256 proposalId,
         address[] memory targets,
         uint256[] memory values,
-        bytes[] memory calldatas
+        bytes[] memory calldatas,
+        bytes32 descriptionHash
     ) internal override(Governor, GovernorTimelockControl) {
-        super._executeOperations(proposalId, targets, values, calldatas);
+        super._executeOperations(proposalId, targets, values, calldatas, descriptionHash);
     }
 
     function _queueOperations(
@@ -165,4 +119,3 @@ contract Governance is
         return super.proposalNeedsQueuing(proposalId);
     }
 }
-
