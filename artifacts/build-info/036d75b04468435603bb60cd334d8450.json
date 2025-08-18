@@ -1,0 +1,698 @@
+{
+	"id": "036d75b04468435603bb60cd334d8450",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.30",
+	"solcLongVersion": "0.8.30+commit.73712a01",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/interfaces/IUserIdentity.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\n/**\r\n * @title IUserIdentity\r\n * @dev This interface defines the essential functions of the UserIdentity contract\r\n * that other contracts in the ecosystem need to interact with. It allows for\r\n * decoupled architecture, where contracts can communicate without having the full\r\n * source code of the other, preventing circular dependencies and improving modularity.\r\n */\r\ninterface IUserIdentity {\r\n    /**\r\n     * @dev A struct to hold all public-facing information about a user's profile.\r\n     */\r\n    struct UserProfile {\r\n        address userAddress;      // The user's wallet address.\r\n        string username;          // A unique, human-readable username.\r\n        string skills;            // A string of user-defined skills, e.g., \"Solidity,React,UI/UX\".\r\n        bytes ipfsPortfolioHash;  // An IPFS content identifier (CID) pointing to a JSON file with portfolio details.\r\n        uint256 reputationScore;  // A numerical score representing the user's reputation.\r\n        uint256 projectsCompleted; // A counter for successfully completed projects.\r\n    }\r\n\r\n    /**\r\n     * @notice Updates the reputation score for a given user.\r\n     * @dev This is a protected function that should only be callable by the authorized Reputation contract.\r\n     * @param _user The address of the user whose score is being updated.\r\n     * @param _newScore The user's newly calculated reputation score.\r\n     */\r\n    function updateReputation(address _user, uint256 _newScore) external;\r\n\r\n    /**\r\n     * @notice Increments the completed projects counter for a user.\r\n     * @dev This is a protected function that should only be callable by an authorized contract\r\n     *      (e.g., the Project contract upon successful completion).\r\n     * @param _user The address of the user who completed a project.\r\n     */\r\n    function incrementProjectsCompleted(address _user) external;\r\n\r\n    /**\r\n     * @notice Fetches the full profile for a given user address.\r\n     * @param _user The address of the user.\r\n     * @return UserProfile A struct containing all of the user's profile data.\r\n     */\r\n    function getProfile(address _user) external view returns (UserProfile memory);\r\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			"contracts/interfaces/IUserIdentity.sol": {
+				"IUserIdentity": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_user",
+									"type": "address"
+								}
+							],
+							"name": "getProfile",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "userAddress",
+											"type": "address"
+										},
+										{
+											"internalType": "string",
+											"name": "username",
+											"type": "string"
+										},
+										{
+											"internalType": "string",
+											"name": "skills",
+											"type": "string"
+										},
+										{
+											"internalType": "bytes",
+											"name": "ipfsPortfolioHash",
+											"type": "bytes"
+										},
+										{
+											"internalType": "uint256",
+											"name": "reputationScore",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "projectsCompleted",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct IUserIdentity.UserProfile",
+									"name": "",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_user",
+									"type": "address"
+								}
+							],
+							"name": "incrementProjectsCompleted",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "_user",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "_newScore",
+									"type": "uint256"
+								}
+							],
+							"name": "updateReputation",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"details": "This interface defines the essential functions of the UserIdentity contract that other contracts in the ecosystem need to interact with. It allows for decoupled architecture, where contracts can communicate without having the full source code of the other, preventing circular dependencies and improving modularity.",
+						"kind": "dev",
+						"methods": {
+							"getProfile(address)": {
+								"params": {
+									"_user": "The address of the user."
+								},
+								"returns": {
+									"_0": "UserProfile A struct containing all of the user's profile data."
+								}
+							},
+							"incrementProjectsCompleted(address)": {
+								"details": "This is a protected function that should only be callable by an authorized contract      (e.g., the Project contract upon successful completion).",
+								"params": {
+									"_user": "The address of the user who completed a project."
+								}
+							},
+							"updateReputation(address,uint256)": {
+								"details": "This is a protected function that should only be callable by the authorized Reputation contract.",
+								"params": {
+									"_newScore": "The user's newly calculated reputation score.",
+									"_user": "The address of the user whose score is being updated."
+								}
+							}
+						},
+						"title": "IUserIdentity",
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"getProfile(address)": "0f53a470",
+							"incrementProjectsCompleted(address)": "43f05743",
+							"updateReputation(address,uint256)": "f5c91a08"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"getProfile\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"userAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"username\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"skills\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"ipfsPortfolioHash\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"reputationScore\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"projectsCompleted\",\"type\":\"uint256\"}],\"internalType\":\"struct IUserIdentity.UserProfile\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"incrementProjectsCompleted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_newScore\",\"type\":\"uint256\"}],\"name\":\"updateReputation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This interface defines the essential functions of the UserIdentity contract that other contracts in the ecosystem need to interact with. It allows for decoupled architecture, where contracts can communicate without having the full source code of the other, preventing circular dependencies and improving modularity.\",\"kind\":\"dev\",\"methods\":{\"getProfile(address)\":{\"params\":{\"_user\":\"The address of the user.\"},\"returns\":{\"_0\":\"UserProfile A struct containing all of the user's profile data.\"}},\"incrementProjectsCompleted(address)\":{\"details\":\"This is a protected function that should only be callable by an authorized contract      (e.g., the Project contract upon successful completion).\",\"params\":{\"_user\":\"The address of the user who completed a project.\"}},\"updateReputation(address,uint256)\":{\"details\":\"This is a protected function that should only be callable by the authorized Reputation contract.\",\"params\":{\"_newScore\":\"The user's newly calculated reputation score.\",\"_user\":\"The address of the user whose score is being updated.\"}}},\"title\":\"IUserIdentity\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getProfile(address)\":{\"notice\":\"Fetches the full profile for a given user address.\"},\"incrementProjectsCompleted(address)\":{\"notice\":\"Increments the completed projects counter for a user.\"},\"updateReputation(address,uint256)\":{\"notice\":\"Updates the reputation score for a given user.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IUserIdentity.sol\":\"IUserIdentity\"},\"evmVersion\":\"prague\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/interfaces/IUserIdentity.sol\":{\"keccak256\":\"0x399447aebe7f9f7327ac34363fc1ee2a37376c8902269a65d4db547af910d61e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1f747a66f0a3afd669f6a11d23dbb15578a419c0aa8f762f488f8707bbc47e9c\",\"dweb:/ipfs/QmXuxohCgU9jmJKL8nrXYyEyEpEDLto9S2AgjKhxYGrxL7\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {
+							"getProfile(address)": {
+								"notice": "Fetches the full profile for a given user address."
+							},
+							"incrementProjectsCompleted(address)": {
+								"notice": "Increments the completed projects counter for a user."
+							},
+							"updateReputation(address,uint256)": {
+								"notice": "Updates the reputation score for a given user."
+							}
+						},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"contracts/interfaces/IUserIdentity.sol": {
+				"ast": {
+					"absolutePath": "contracts/interfaces/IUserIdentity.sol",
+					"exportedSymbols": {
+						"IUserIdentity": [
+							40
+						]
+					},
+					"id": 41,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".20"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:24:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "IUserIdentity",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"documentation": {
+								"id": 2,
+								"nodeType": "StructuredDocumentation",
+								"src": "61:370:0",
+								"text": " @title IUserIdentity\n @dev This interface defines the essential functions of the UserIdentity contract\n that other contracts in the ecosystem need to interact with. It allows for\n decoupled architecture, where contracts can communicate without having the full\n source code of the other, preventing circular dependencies and improving modularity."
+							},
+							"fullyImplemented": false,
+							"id": 40,
+							"linearizedBaseContracts": [
+								40
+							],
+							"name": "IUserIdentity",
+							"nameLocation": "443:13:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"canonicalName": "IUserIdentity.UserProfile",
+									"documentation": {
+										"id": 3,
+										"nodeType": "StructuredDocumentation",
+										"src": "464:96:0",
+										"text": " @dev A struct to hold all public-facing information about a user's profile."
+									},
+									"id": 16,
+									"members": [
+										{
+											"constant": false,
+											"id": 5,
+											"mutability": "mutable",
+											"name": "userAddress",
+											"nameLocation": "604:11:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 16,
+											"src": "596:19:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_address",
+												"typeString": "address"
+											},
+											"typeName": {
+												"id": 4,
+												"name": "address",
+												"nodeType": "ElementaryTypeName",
+												"src": "596:7:0",
+												"stateMutability": "nonpayable",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 7,
+											"mutability": "mutable",
+											"name": "username",
+											"nameLocation": "668:8:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 16,
+											"src": "661:15:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 6,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "661:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 9,
+											"mutability": "mutable",
+											"name": "skills",
+											"nameLocation": "741:6:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 16,
+											"src": "734:13:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_string_storage_ptr",
+												"typeString": "string"
+											},
+											"typeName": {
+												"id": 8,
+												"name": "string",
+												"nodeType": "ElementaryTypeName",
+												"src": "734:6:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_storage_ptr",
+													"typeString": "string"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 11,
+											"mutability": "mutable",
+											"name": "ipfsPortfolioHash",
+											"nameLocation": "841:17:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 16,
+											"src": "835:23:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_bytes_storage_ptr",
+												"typeString": "bytes"
+											},
+											"typeName": {
+												"id": 10,
+												"name": "bytes",
+												"nodeType": "ElementaryTypeName",
+												"src": "835:5:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_bytes_storage_ptr",
+													"typeString": "bytes"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 13,
+											"mutability": "mutable",
+											"name": "reputationScore",
+											"nameLocation": "962:15:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 16,
+											"src": "954:23:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 12,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "954:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 15,
+											"mutability": "mutable",
+											"name": "projectsCompleted",
+											"nameLocation": "1054:17:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 16,
+											"src": "1046:25:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 14,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "1046:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "UserProfile",
+									"nameLocation": "573:11:0",
+									"nodeType": "StructDefinition",
+									"scope": 40,
+									"src": "566:563:0",
+									"visibility": "public"
+								},
+								{
+									"documentation": {
+										"id": 17,
+										"nodeType": "StructuredDocumentation",
+										"src": "1137:331:0",
+										"text": " @notice Updates the reputation score for a given user.\n @dev This is a protected function that should only be callable by the authorized Reputation contract.\n @param _user The address of the user whose score is being updated.\n @param _newScore The user's newly calculated reputation score."
+									},
+									"functionSelector": "f5c91a08",
+									"id": 24,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "updateReputation",
+									"nameLocation": "1483:16:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 22,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 19,
+												"mutability": "mutable",
+												"name": "_user",
+												"nameLocation": "1508:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 24,
+												"src": "1500:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 18,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1500:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 21,
+												"mutability": "mutable",
+												"name": "_newScore",
+												"nameLocation": "1523:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 24,
+												"src": "1515:17:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 20,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1515:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1499:34:0"
+									},
+									"returnParameters": {
+										"id": 23,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1542:0:0"
+									},
+									"scope": 40,
+									"src": "1474:69:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 25,
+										"nodeType": "StructuredDocumentation",
+										"src": "1551:319:0",
+										"text": " @notice Increments the completed projects counter for a user.\n @dev This is a protected function that should only be callable by an authorized contract\n      (e.g., the Project contract upon successful completion).\n @param _user The address of the user who completed a project."
+									},
+									"functionSelector": "43f05743",
+									"id": 30,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "incrementProjectsCompleted",
+									"nameLocation": "1885:26:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 28,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 27,
+												"mutability": "mutable",
+												"name": "_user",
+												"nameLocation": "1920:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 30,
+												"src": "1912:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 26,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1912:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1911:15:0"
+									},
+									"returnParameters": {
+										"id": 29,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1935:0:0"
+									},
+									"scope": 40,
+									"src": "1876:60:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 31,
+										"nodeType": "StructuredDocumentation",
+										"src": "1944:205:0",
+										"text": " @notice Fetches the full profile for a given user address.\n @param _user The address of the user.\n @return UserProfile A struct containing all of the user's profile data."
+									},
+									"functionSelector": "0f53a470",
+									"id": 39,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getProfile",
+									"nameLocation": "2164:10:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 34,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 33,
+												"mutability": "mutable",
+												"name": "_user",
+												"nameLocation": "2183:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 39,
+												"src": "2175:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 32,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "2175:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2174:15:0"
+									},
+									"returnParameters": {
+										"id": 38,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 37,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 39,
+												"src": "2213:18:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_UserProfile_$16_memory_ptr",
+													"typeString": "struct IUserIdentity.UserProfile"
+												},
+												"typeName": {
+													"id": 36,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 35,
+														"name": "UserProfile",
+														"nameLocations": [
+															"2213:11:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 16,
+														"src": "2213:11:0"
+													},
+													"referencedDeclaration": 16,
+													"src": "2213:11:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_UserProfile_$16_storage_ptr",
+														"typeString": "struct IUserIdentity.UserProfile"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2212:20:0"
+									},
+									"scope": 40,
+									"src": "2155:78:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 41,
+							"src": "433:1803:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "33:2203:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

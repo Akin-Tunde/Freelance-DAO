@@ -72,6 +72,31 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "budget",
+						"type": "uint256"
+					}
+				],
+				"name": "ProjectCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "freelancer",
@@ -277,13 +302,50 @@
 			}
 		],
 		"devdoc": {
+			"details": "Represents a single freelance job on the platform. This contract manages the project's lifecycle from proposal submissions to hiring, review, and completion or dispute. Each project is a self-contained state machine.",
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"acceptWork()": {
+					"details": "This is the final step in a successful project, triggering the Escrow contract."
+				},
+				"hireFreelancer(address)": {
+					"details": "This action creates a new Escrow contract to secure the project funds.",
+					"params": {
+						"_freelancer": "The address of the freelancer to hire."
+					}
+				},
+				"raiseDispute()": {
+					"details": "This freezes the funds in Escrow and transitions the project to the InDispute state."
+				},
+				"submitProposal(string,uint256)": {
+					"params": {
+						"_details": "A string describing the freelancer's plan for the project.",
+						"_proposedCost": "The freelancer's bid for the project."
+					}
+				}
+			},
+			"title": "Project",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"acceptWork()": {
+					"notice": "Allows the project owner to accept the submitted work and release payment."
+				},
+				"hireFreelancer(address)": {
+					"notice": "Allows the project owner to hire a freelancer who has submitted a proposal."
+				},
+				"raiseDispute()": {
+					"notice": "Allows either the owner or the freelancer to raise a dispute."
+				},
+				"submitProposal(string,uint256)": {
+					"notice": "Allows any user to submit a proposal for this project."
+				},
+				"submitWork()": {
+					"notice": "Allows the hired freelancer to signal that the work is ready for review."
+				}
+			},
 			"version": 1
 		}
 	},
@@ -328,19 +390,19 @@
 			]
 		},
 		"contracts/core/Escrow.sol": {
-			"keccak256": "0x73329b4367ec897a7d93e1e80846525e220403d8939b427a1faa7457e0ab21fb",
+			"keccak256": "0xedd7fddeb82b0508983d70b7351a5947ed44c095011d19e90862713f08d27fe4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d09d75afd25be8c17c16a61807e7d167d582ee6759dbb758d4685cd4c372b598",
-				"dweb:/ipfs/QmQsedWYqL7yxjY86gs1NtGLJBkzb8nXJRHsJe5vejS1Qy"
+				"bzz-raw://9f76c21afff1c3af497db1dc7c9d7699c85f42cda6c6f2f300dd871ef6f1ece5",
+				"dweb:/ipfs/QmbnaNe1j3sMpdLmZkcsJthd3fsoVjqjajMyrofGcH2UBp"
 			]
 		},
 		"contracts/core/Project.sol": {
-			"keccak256": "0xe46d565e3c27867c5d6f448a1169bcb4837814eba920c4c01a467d5e269e295b",
+			"keccak256": "0x088ad24d85d54de50aee0f9e175d1a919c009f2ebf07d38b2176da26bdf8879f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://97da9c98a3981e68d5d83658ae49874a58b4a4b91a209e3635b88106c45dccbe",
-				"dweb:/ipfs/QmbTC1X4fuJUtRAJga447Vz2bPoyKobcXQRg3NsTYU4ndL"
+				"bzz-raw://8b3873f21c0be71ae87dc363de77bebbf1eb1e0c093a29e76b711ca88b375d6b",
+				"dweb:/ipfs/QmQD1TcdUnmKZbsLn1xgog1vMNzdm8J8JvG6dTDgApGr8U"
 			]
 		},
 		"contracts/utils/Proposal.sol": {

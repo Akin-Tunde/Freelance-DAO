@@ -89,7 +89,7 @@
 			}
 		],
 		"devdoc": {
-			"details": "Interface for the UserIdentity contract. Defines the external functions that other contracts can call to interact with user profiles.",
+			"details": "This interface defines the essential functions of the UserIdentity contract that other contracts in the ecosystem need to interact with. It allows for decoupled architecture, where contracts can communicate without having the full source code of the other, preventing circular dependencies and improving modularity.",
 			"kind": "dev",
 			"methods": {
 				"getProfile(address)": {
@@ -97,17 +97,17 @@
 						"_user": "The address of the user."
 					},
 					"returns": {
-						"_0": "UserProfile A struct containing the user's profile data."
+						"_0": "UserProfile A struct containing all of the user's profile data."
 					}
 				},
 				"incrementProjectsCompleted(address)": {
-					"details": "MUST only be callable by an authorized contract (e.g., Project or Escrow).",
+					"details": "This is a protected function that should only be callable by an authorized contract      (e.g., the Project contract upon successful completion).",
 					"params": {
 						"_user": "The address of the user who completed a project."
 					}
 				},
 				"updateReputation(address,uint256)": {
-					"details": "MUST only be callable by the authorized Reputation contract.",
+					"details": "This is a protected function that should only be callable by the authorized Reputation contract.",
 					"params": {
 						"_newScore": "The user's newly calculated reputation score.",
 						"_user": "The address of the user whose score is being updated."
@@ -121,7 +121,7 @@
 			"kind": "user",
 			"methods": {
 				"getProfile(address)": {
-					"notice": "Fetches the profile for a given user address."
+					"notice": "Fetches the full profile for a given user address."
 				},
 				"incrementProjectsCompleted(address)": {
 					"notice": "Increments the completed projects counter for a user."
@@ -150,11 +150,11 @@
 	},
 	"sources": {
 		"contracts/interfaces/IUserIdentity.sol": {
-			"keccak256": "0x557812a5b69c45863271065189ee59f7971d3319ae85cd405aaa4d10ce2584bf",
+			"keccak256": "0x399447aebe7f9f7327ac34363fc1ee2a37376c8902269a65d4db547af910d61e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e031b5b5cbfcf6a17226193fb2d0dd7be9d68ce8a90b07b1caa5356e45618653",
-				"dweb:/ipfs/QmYCKEMSbB8oLkv9KbHE5FVd33MNF3XDXUG7bkPj9RRCET"
+				"bzz-raw://1f747a66f0a3afd669f6a11d23dbb15578a419c0aa8f762f488f8707bbc47e9c",
+				"dweb:/ipfs/QmXuxohCgU9jmJKL8nrXYyEyEpEDLto9S2AgjKhxYGrxL7"
 			]
 		}
 	},
