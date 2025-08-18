@@ -1,0 +1,102 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "ipfsHash",
+						"type": "bytes"
+					}
+				],
+				"name": "MessageSent",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_ipfsHash",
+						"type": "bytes"
+					}
+				],
+				"name": "sendMessage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Facilitates off-chain messaging by logging events with pointers to encrypted data. This contract does NOT store any message content, ensuring privacy and low gas costs.",
+			"kind": "dev",
+			"methods": {
+				"sendMessage(address,bytes)": {
+					"params": {
+						"_ipfsHash": "The content identifier (CID) of the encrypted message data on IPFS.",
+						"_to": "The recipient of the message."
+					}
+				}
+			},
+			"title": "Messaging",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"sendMessage(address,bytes)": {
+					"notice": "Sends a message by emitting an event with its off-chain location."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/utils/Messaging.sol": "Messaging"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/utils/Messaging.sol": {
+			"keccak256": "0x068fb3378e879372be6775dd270a4db13ad2bc0cb93529f8b3ae62a8d2527edf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bdcec394512f9a7d32321737a16a44e3d521aa9c4327221cac6c05d22aa9d139",
+				"dweb:/ipfs/QmdGY84rPVQDGFp8eWURkUTw86tthccGrXy54rDwCWKhGg"
+			]
+		}
+	},
+	"version": 1
+}

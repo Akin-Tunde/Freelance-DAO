@@ -1,0 +1,162 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "getProfile",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "userAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "username",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "skills",
+								"type": "string"
+							},
+							{
+								"internalType": "bytes",
+								"name": "ipfsPortfolioHash",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint256",
+								"name": "reputationScore",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "projectsCompleted",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct IUserIdentity.UserProfile",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "incrementProjectsCompleted",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_newScore",
+						"type": "uint256"
+					}
+				],
+				"name": "updateReputation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Interface for the UserIdentity contract. Defines the external functions that other contracts can call to interact with user profiles.",
+			"kind": "dev",
+			"methods": {
+				"getProfile(address)": {
+					"params": {
+						"_user": "The address of the user."
+					},
+					"returns": {
+						"_0": "UserProfile A struct containing the user's profile data."
+					}
+				},
+				"incrementProjectsCompleted(address)": {
+					"details": "MUST only be callable by an authorized contract (e.g., Project or Escrow).",
+					"params": {
+						"_user": "The address of the user who completed a project."
+					}
+				},
+				"updateReputation(address,uint256)": {
+					"details": "MUST only be callable by the authorized Reputation contract.",
+					"params": {
+						"_newScore": "The user's newly calculated reputation score.",
+						"_user": "The address of the user whose score is being updated."
+					}
+				}
+			},
+			"title": "IUserIdentity",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getProfile(address)": {
+					"notice": "Fetches the profile for a given user address."
+				},
+				"incrementProjectsCompleted(address)": {
+					"notice": "Increments the completed projects counter for a user."
+				},
+				"updateReputation(address,uint256)": {
+					"notice": "Updates the reputation score for a given user."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/IUserIdentity.sol": "IUserIdentity"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interfaces/IUserIdentity.sol": {
+			"keccak256": "0x557812a5b69c45863271065189ee59f7971d3319ae85cd405aaa4d10ce2584bf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e031b5b5cbfcf6a17226193fb2d0dd7be9d68ce8a90b07b1caa5356e45618653",
+				"dweb:/ipfs/QmYCKEMSbB8oLkv9KbHE5FVd33MNF3XDXUG7bkPj9RRCET"
+			]
+		}
+	},
+	"version": 1
+}
