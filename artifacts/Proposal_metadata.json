@@ -186,9 +186,6 @@
 			},
 			"kind": "dev",
 			"methods": {
-				"accept()": {
-					"details": "Can only be called by the parent Project contract (the owner)."
-				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
@@ -203,11 +200,7 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"accept()": {
-					"notice": "Marks the proposal as accepted."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -244,11 +237,11 @@
 			]
 		},
 		"contracts/utils/Proposal.sol": {
-			"keccak256": "0xb84062133a4bbb7c96292782cb42ed742b3eafe38b79306c4871f9eae2c7200e",
+			"keccak256": "0xb0c826f319c6387fcbb11e6b548ac66c9f03cf893a5740dc73329852d4ad237e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://38ba9fb230852f710e820baa373a2f45eb1bb8dc4a7421d654d55da002bb5ebc",
-				"dweb:/ipfs/Qmc5FQEcgEK1gEY52REJmBA4dc3ew31QXh7zFKPE6rjo7k"
+				"bzz-raw://9aae37ef9bdeec1609d93aecf6eca7c0a28c572040715c574fe9337954cbf626",
+				"dweb:/ipfs/QmQLrUSdw5nJLtzs8X3rFfvHt5fHtTHsFLSqHA9VTsMnd7"
 			]
 		}
 	},

@@ -150,7 +150,6 @@
 			}
 		],
 		"devdoc": {
-			"details": "A contract that allows users to stake the PlatformToken (ARCH). Staking can be used for multiple purposes, such as earning rewards, gaining eligibility to become a dispute resolution juror, or getting reduced platform fees. This contract uses the ReentrancyGuard to prevent re-entrancy attacks on staking/unstaking.",
 			"errors": {
 				"ReentrancyGuardReentrantCall()": [
 					{
@@ -159,40 +158,12 @@
 				]
 			},
 			"kind": "dev",
-			"methods": {
-				"constructor": {
-					"details": "Sets the immutable token addresses for staking and rewards.",
-					"params": {
-						"_rewardsTokenAddress": "The address of the token for rewards distribution.",
-						"_stakingTokenAddress": "The address of the PlatformToken."
-					}
-				},
-				"stake(uint256)": {
-					"details": "The user must first call `approve` on the staking token contract to authorize      this contract to manage their tokens. `nonReentrant` modifier prevents re-entrancy attacks.",
-					"params": {
-						"_amount": "The amount of tokens to stake."
-					}
-				},
-				"unstake(uint256)": {
-					"details": "`nonReentrant` modifier prevents re-entrancy attacks.",
-					"params": {
-						"_amount": "The amount of tokens to unstake."
-					}
-				}
-			},
-			"title": "Staking",
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"stake(uint256)": {
-					"notice": "Stakes a specified amount of the staking token."
-				},
-				"unstake(uint256)": {
-					"notice": "Unstakes a specified amount of the staking token."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -229,11 +200,11 @@
 			]
 		},
 		"contracts/Financial/Staking.sol": {
-			"keccak256": "0x5b0ce7d042e2700c724d65ba7a0068135d2f5ebcacdbd63e940d25f01ead9a91",
+			"keccak256": "0x6aa9f8fbd03e1a8dc5a646597c6c14939a90a566b9049a080cdf6e03a2432ea6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0c93b971f06a73a7d253d9b53a0f3baba52e3a80c571e99ccb5fd73e5c70b881",
-				"dweb:/ipfs/Qmbxs75SvTAkRt9haWXXFhPqjTFUhTQN8ByWkWcSZF7Xap"
+				"bzz-raw://0d71865fc4c1ea2f78ef458d14305abdae54d6a5a68606f02835b875462ed3fb",
+				"dweb:/ipfs/QmVEt9CruZFf6sYn3QtNBKZX3qkq3tWeW3YuX5vFxdzkGx"
 			]
 		}
 	},

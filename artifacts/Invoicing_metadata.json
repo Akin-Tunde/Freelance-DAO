@@ -11,6 +11,11 @@
 						"internalType": "address",
 						"name": "_projectContract",
 						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_freelancer",
+						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -134,6 +139,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "freelancer",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "invoiceCounter",
 				"outputs": [
 					{
@@ -241,16 +259,6 @@
 			},
 			"kind": "dev",
 			"methods": {
-				"approveInvoice(uint256)": {
-					"details": "Can only be called by the owner (the Project contract)."
-				},
-				"createInvoice(string,uint256)": {
-					"details": "Should be callable only by the freelancer of the project. This would require      passing the freelancer's address to the constructor and adding a modifier.",
-					"params": {
-						"_amount": "The amount requested for this milestone.",
-						"_desc": "A description of the work completed for the invoice."
-					}
-				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
@@ -265,14 +273,7 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"approveInvoice(uint256)": {
-					"notice": "Approves a pending invoice."
-				},
-				"createInvoice(string,uint256)": {
-					"notice": "Creates a new invoice for a project milestone."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -309,11 +310,11 @@
 			]
 		},
 		"contracts/utils/Invoicing.sol": {
-			"keccak256": "0xf5d3738fbb586bfc84cf0304636c58b82bf10d698f45b0cb4930cb024013e852",
+			"keccak256": "0xd87ce6d6eee7e1b5664e411c3642c0950b0c168d54363f93cd8d9cbf3ab65471",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7252dc52a4f5aa22251882a64a42584c17a9a19ef230ccad2ae4fc265ed3a457",
-				"dweb:/ipfs/Qmed6pPAMLjKQ1xBGzmpEq8XzvfyjWq8LeR2pEBXKNFZYm"
+				"bzz-raw://2ded10753761aca7cdff0e24dff022a08c8545938223bda203c13e8ebda14734",
+				"dweb:/ipfs/Qme6izLg9gkcd8uXvaJnjYNnbfy2hik1th6WSERcfxoxZg"
 			]
 		}
 	},

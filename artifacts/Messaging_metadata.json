@@ -50,26 +50,13 @@
 			}
 		],
 		"devdoc": {
-			"details": "Facilitates off-chain messaging by logging events with pointers to encrypted data. This contract does NOT store any message content, ensuring privacy and low gas costs.",
 			"kind": "dev",
-			"methods": {
-				"sendMessage(address,bytes)": {
-					"params": {
-						"_ipfsHash": "The content identifier (CID) of the encrypted message data on IPFS.",
-						"_to": "The recipient of the message."
-					}
-				}
-			},
-			"title": "Messaging",
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"sendMessage(address,bytes)": {
-					"notice": "Sends a message by emitting an event with its off-chain location."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -90,11 +77,11 @@
 	},
 	"sources": {
 		"contracts/utils/Messaging.sol": {
-			"keccak256": "0x068fb3378e879372be6775dd270a4db13ad2bc0cb93529f8b3ae62a8d2527edf",
+			"keccak256": "0x84bd943c3a0bab848dd8556f137054302ae310e0a7b6ba76645c0a03206638ee",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bdcec394512f9a7d32321737a16a44e3d521aa9c4327221cac6c05d22aa9d139",
-				"dweb:/ipfs/QmdGY84rPVQDGFp8eWURkUTw86tthccGrXy54rDwCWKhGg"
+				"bzz-raw://5691352bdf43f4d0ae43cf88eeeb9ed973dbb297ac9a4303752b930d6dfdf2b6",
+				"dweb:/ipfs/QmQvvQZr442eHzQncFpAXMeNArNY6M4z9UosEfUbNC1xzG"
 			]
 		}
 	},

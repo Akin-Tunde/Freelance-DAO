@@ -960,8 +960,6 @@
 			}
 		],
 		"devdoc": {
-			"author": "The Architect Team",
-			"details": "The governance token for the platform, compatible with OpenZeppelin v5. It correctly composes ERC20, Ownable, ERC20Permit, and ERC20Votes.",
 			"errors": {
 				"CheckpointUnorderedInsertion()": [
 					{
@@ -1153,9 +1151,6 @@
 				"name()": {
 					"details": "Returns the name of the token."
 				},
-				"nonces(address)": {
-					"details": "Overrides the nonces function to resolve the conflict between ERC20Permit and its Nonces dependency."
-				},
 				"numCheckpoints(address)": {
 					"details": "Get number of checkpoints for `account`."
 				},
@@ -1184,16 +1179,11 @@
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
-			"title": "PlatformToken",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"mint(address,uint256)": {
-					"notice": "Mints new tokens. Can only be called by the contract owner."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -1430,11 +1420,11 @@
 			]
 		},
 		"contracts/Financial/PlatformToken.sol": {
-			"keccak256": "0x7c6dc182a19343caf67657c97c8550c0a934ee1485d3fe44202d5a4e9abb99c4",
+			"keccak256": "0x6955090fac4642a4b650f783f926154aa5113138a2fb1028f0cbe61a22d18002",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://81043b5f6fd7a9a0a196add673b7a61fea1137efbacbf8cc5e3e3d7567b27ee2",
-				"dweb:/ipfs/QmRcNnSL3XyJiwRg3bDrav2fMA19Mj9iNEboVyVTDAkzBr"
+				"bzz-raw://25913fbad9b106a7a965d97cc15a4f1464412129f01ef4e08a61cc098a62f996",
+				"dweb:/ipfs/Qmdm3BfTEPpHptoJZHJc8BwEpNtsVa3NxARvz3xLzC6RQR"
 			]
 		}
 	},

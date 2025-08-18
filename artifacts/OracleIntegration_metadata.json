@@ -44,28 +44,13 @@
 			}
 		],
 		"devdoc": {
-			"details": "Provides a simple interface to get the latest price from a Chainlink Price Feed. This decouples the core contracts from the specific oracle implementation.",
 			"kind": "dev",
-			"methods": {
-				"getLatestPrice()": {
-					"returns": {
-						"_0": "The price, which includes decimals (e.g., 8 for USD pairs)."
-					}
-				}
-			},
-			"title": "OracleIntegration",
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"getDecimals()": {
-					"notice": "Returns the number of decimals for the price feed."
-				},
-				"getLatestPrice()": {
-					"notice": "Returns the latest price from the Chainlink feed."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -94,11 +79,11 @@
 			]
 		},
 		"contracts/utils/OracleIntegration.sol": {
-			"keccak256": "0xecac07823a5e7fe46788fc6cabd5f83b6c85d8e985a2509249332c428ea2859b",
+			"keccak256": "0xfcd4a52c6d0cc14fe5c82b53ad9178a31e5a3f37c783edbe236330cefd53d060",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2d62f02a5bafb74928e8151f89fdf42f40d9708becbd14376bbb187f78cc1167",
-				"dweb:/ipfs/QmTydztabzwoNQEdqwCe6NiHCiUaxtM1xMd4bqakHh1fhh"
+				"bzz-raw://48c0dd64c1728f60439eaaba40fa3585aeefcbbed2680ee51891d6b97b321d33",
+				"dweb:/ipfs/QmTkacAsdkMsyuHScr5TTXVPnrqEduhMCAzWg1Vv5MjT8d"
 			]
 		}
 	},

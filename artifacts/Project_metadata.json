@@ -302,50 +302,13 @@
 			}
 		],
 		"devdoc": {
-			"details": "Represents a single freelance job on the platform. This contract manages the project's lifecycle from proposal submissions to hiring, review, and completion or dispute. Each project is a self-contained state machine.",
 			"kind": "dev",
-			"methods": {
-				"acceptWork()": {
-					"details": "This is the final step in a successful project, triggering the Escrow contract."
-				},
-				"hireFreelancer(address)": {
-					"details": "This action creates a new Escrow contract to secure the project funds.",
-					"params": {
-						"_freelancer": "The address of the freelancer to hire."
-					}
-				},
-				"raiseDispute()": {
-					"details": "This freezes the funds in Escrow and transitions the project to the InDispute state."
-				},
-				"submitProposal(string,uint256)": {
-					"params": {
-						"_details": "A string describing the freelancer's plan for the project.",
-						"_proposedCost": "The freelancer's bid for the project."
-					}
-				}
-			},
-			"title": "Project",
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"acceptWork()": {
-					"notice": "Allows the project owner to accept the submitted work and release payment."
-				},
-				"hireFreelancer(address)": {
-					"notice": "Allows the project owner to hire a freelancer who has submitted a proposal."
-				},
-				"raiseDispute()": {
-					"notice": "Allows either the owner or the freelancer to raise a dispute."
-				},
-				"submitProposal(string,uint256)": {
-					"notice": "Allows any user to submit a proposal for this project."
-				},
-				"submitWork()": {
-					"notice": "Allows the hired freelancer to signal that the work is ready for review."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -398,11 +361,11 @@
 			]
 		},
 		"contracts/core/Project.sol": {
-			"keccak256": "0x088ad24d85d54de50aee0f9e175d1a919c009f2ebf07d38b2176da26bdf8879f",
+			"keccak256": "0xdc723de5e46d26184050652a65a5c7a629f87b13384e170944174baa01009761",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8b3873f21c0be71ae87dc363de77bebbf1eb1e0c093a29e76b711ca88b375d6b",
-				"dweb:/ipfs/QmQD1TcdUnmKZbsLn1xgog1vMNzdm8J8JvG6dTDgApGr8U"
+				"bzz-raw://fa9c8f666dc9b351f6b9c89340df1a984a25606f8dfbf5d7e795e70a45b8f65b",
+				"dweb:/ipfs/QmPEgD3LdQurN4e4YMKQ2hR5DULew2u3jW3Ak4BDaSexVp"
 			]
 		},
 		"contracts/utils/Proposal.sol": {

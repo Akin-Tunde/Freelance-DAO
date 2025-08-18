@@ -1,114 +1,168 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "../Financial/PlatformToken.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/Governor.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorSettings.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorCountingSimple.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorVotes.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorVotesQuorumFraction.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v5.0.2/contracts/governance/extensions/GovernorTimelockControl.sol";
 
-contract Governance is Ownable {
-    
-    enum ProposalState { Pending, Active, Succeeded, Defeated, Executed, Canceled }
-    
-    struct Proposal {
-        uint id;
-        address proposer;
-        address[] targets;          // Contracts to call
-        uint[] values;              // ETH to send with calls
-        bytes[] calldatas;          // Function calls to encode
-        uint voteStart;             // Block number when voting starts
-        uint voteEnd;               // Block number when voting ends
-        uint forVotes;
-        uint againstVotes;
-        bool canceled;
-        bool executed;
+contract Governance is
+    Governor,
+    GovernorSettings,
+    GovernorCountingSimple,
+    GovernorVotes,
+    GovernorVotesQuorumFraction,
+    GovernorTimelockControl
+{
+    constructor(
+        IVotes _token,
+        TimelockController _timelock,
+        uint48 _votingDelay,
+        uint32 _votingPeriod,
+        uint256 _proposalThreshold,
+        uint256 _quorumNumerator
+    )
+        Governor("ArchitectDAO")
+        GovernorSettings(_votingDelay, _votingPeriod, _proposalThreshold)
+        GovernorVotes(_token)
+        GovernorVotesQuorumFraction(_quorumNumerator)
+        GovernorTimelockControl(_timelock)
+    {}
+
+    // --- Required overrides to resolve inheritance conflicts ---
+
+    function votingDelay()
+        public
+        view
+        override(Governor, GovernorSettings)
+        returns (uint256)
+    {
+        return super.votingDelay();
     }
 
-    PlatformToken public immutable token;
-    
-    uint public votingDelay;    // Blocks to wait before voting starts
-    uint public votingPeriod;   // Blocks for which voting is active
-    uint public proposalThreshold; // Minimum tokens required to create a proposal
-
-    uint public proposalCount;
-    mapping(uint => Proposal) public proposals;
-    mapping(uint => mapping(address => bool)) public hasVoted;
-
-    event ProposalCreated(uint indexed proposalId, address indexed proposer, address[] targets, string description);
-    event VoteCast(address indexed voter, uint indexed proposalId, bool inFavor, uint weight);
-
-    constructor(address _tokenAddress, address _initialOwner, uint _votingDelay, uint _votingPeriod, uint _proposalThreshold) Ownable(_initialOwner) {
-        token = PlatformToken(_tokenAddress);
-        votingDelay = _votingDelay;
-        votingPeriod = _votingPeriod;
-        proposalThreshold = _proposalThreshold;
+    function votingPeriod()
+        public
+        view
+        override(Governor, GovernorSettings)
+        returns (uint256)
+    {
+        return super.votingPeriod();
     }
 
-    function propose(address[] memory _targets, uint[] memory _values, bytes[] memory _calldatas, string memory _description) external returns (uint) {
-        require(token.getVotes(msg.sender) >= proposalThreshold, "Governance: Proposer has insufficient voting power");
-        require(_targets.length == _values.length && _targets.length == _calldatas.length, "Governance: Invalid proposal parameters");
-
-        proposalCount++;
-        Proposal storage newProposal = proposals[proposalCount];
-        newProposal.id = proposalCount;
-        newProposal.proposer = msg.sender;
-        newProposal.targets = _targets;
-        newProposal.values = _values;
-        newProposal.calldatas = _calldatas;
-        newProposal.voteStart = block.number + votingDelay;
-        newProposal.voteEnd = block.number + votingDelay + votingPeriod;
-        
-        emit ProposalCreated(proposalCount, msg.sender, _targets, _description);
-        return proposalCount;
+    function proposalThreshold()
+        public
+        view
+        override(Governor, GovernorSettings)
+        returns (uint256)
+    {
+        return super.proposalThreshold();
     }
 
-    function castVote(uint _proposalId, bool _support) external {
-        Proposal storage proposal = proposals[_proposalId];
-        require(getState(_proposalId) == ProposalState.Active, "Governance: Voting is not active");
-        require(!hasVoted[_proposalId][msg.sender], "Governance: Voter has already voted");
-
-        uint voteWeight = token.getVotes(msg.sender);
-        require(voteWeight > 0, "Governance: No voting power");
-
-        if (_support) {
-            proposal.forVotes += voteWeight;
-        } else {
-            proposal.againstVotes += voteWeight;
-        }
-
-        hasVoted[_proposalId][msg.sender] = true;
-        emit VoteCast(msg.sender, _proposalId, _support, voteWeight);
+    function state(uint256 proposalId)
+        public
+        view
+        override(Governor, GovernorTimelockControl)
+        returns (ProposalState)
+    {
+        return super.state(proposalId);
     }
-    
-    function execute(uint _proposalId) external payable {
-        Proposal storage proposal = proposals[_proposalId];
-        require(getState(_proposalId) == ProposalState.Succeeded, "Governance: Proposal not successful");
-        
-        proposal.executed = true;
-        
-        for (uint i = 0; i < proposal.targets.length; i++) {
-            (bool success, ) = proposal.targets[i].call{value: proposal.values[i]}(proposal.calldatas[i]);
-            require(success, "Governance: Execution failed");
-        }
+
+    function propose(
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        string memory description
+    ) public override(Governor) returns (uint256) {
+        return super.propose(targets, values, calldatas, description);
     }
-    
-    function getState(uint _proposalId) public view returns (ProposalState) {
-        Proposal storage proposal = proposals[_proposalId];
-        if (proposal.executed) {
-            return ProposalState.Executed;
-        }
-        if (proposal.canceled) {
-            return ProposalState.Canceled;
-        }
-        if (block.number <= proposal.voteStart) {
-            return ProposalState.Pending;
-        }
-        if (block.number <= proposal.voteEnd) {
-            return ProposalState.Active;
-        }
-        // NOTE: Quorum logic would be needed here for a robust system
-        if (proposal.forVotes > proposal.againstVotes) {
-            return ProposalState.Succeeded;
-        } else {
-            return ProposalState.Defeated;
-        }
+
+    function _executor()
+        internal
+        view
+        override(Governor, GovernorTimelockControl)
+        returns (address)
+    {
+        return super._executor();
+    }
+
+    function cancel(
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        bytes32 descriptionHash
+    )
+        public
+        override(Governor, GovernorTimelockControl)
+        returns (uint256)
+    {
+        return super.cancel(targets, values, calldatas, descriptionHash);
+    }
+
+    function execute(
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        bytes32 descriptionHash
+    )
+        public
+        payable
+        override(Governor, GovernorTimelockControl)
+        returns (uint256)
+    {
+        return super.execute(targets, values, calldatas, descriptionHash);
+    }
+
+    function queue(
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        bytes32 descriptionHash
+    )
+        public
+        override(Governor, GovernorTimelockControl)
+        returns (uint256)
+    {
+        return super.queue(targets, values, calldatas, descriptionHash);
+    }
+
+    // Additional required overrides for functions with conflicts
+    function _cancel(
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        bytes32 descriptionHash
+    ) internal override(Governor, GovernorTimelockControl) returns (uint256) {
+        return super._cancel(targets, values, calldatas, descriptionHash);
+    }
+
+    function _executeOperations(
+        uint256 proposalId,
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas
+    ) internal override(Governor, GovernorTimelockControl) {
+        super._executeOperations(proposalId, targets, values, calldatas);
+    }
+
+    function _queueOperations(
+        uint256 proposalId,
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        bytes32 descriptionHash
+    ) internal override(Governor, GovernorTimelockControl) returns (uint48) {
+        return super._queueOperations(proposalId, targets, values, calldatas, descriptionHash);
+    }
+
+    function proposalNeedsQueuing(uint256 proposalId)
+        public
+        view
+        override(Governor, GovernorTimelockControl)
+        returns (bool)
+    {
+        return super.proposalNeedsQueuing(proposalId);
     }
 }
+

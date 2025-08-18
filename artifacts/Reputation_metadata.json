@@ -9,12 +9,71 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_initialOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
 						"name": "_userIdentityAddress",
 						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newAuthority",
+						"type": "address"
+					}
+				],
+				"name": "AuthorityUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
 			},
 			{
 				"anonymous": false,
@@ -43,6 +102,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "projectAuthority",
 				"outputs": [
 					{
@@ -52,6 +124,13 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -91,6 +170,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "userIdentity",
 				"outputs": [
@@ -105,32 +197,35 @@
 			}
 		],
 		"devdoc": {
+			"errors": {
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				]
+			},
 			"kind": "dev",
 			"methods": {
-				"setProjectAuthority(address)": {
-					"details": "Should be owned/controlled by governance."
+				"owner()": {
+					"details": "Returns the address of the current owner."
 				},
-				"submitRating(address,address,uint256)": {
-					"details": "This should be called by an authorized contract (e.g., Project).",
-					"params": {
-						"_ratee": "The address of the user being rated.",
-						"_rater": "The address of the user giving the rating.",
-						"_score": "A score from 1 to 5."
-					}
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"setProjectAuthority(address)": {
-					"notice": "Sets the authorized address that can trigger rating updates."
-				},
-				"submitRating(address,address,uint256)": {
-					"notice": "Submits a rating for a user after a project is completed."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -150,20 +245,36 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Governance/Reputation.sol": {
-			"keccak256": "0x5765afc63be3715ff5f69dee174f126a2246f87fad7b39174030f3a71444bd7d",
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a9082b004193dcdd54b983fc5e267f1ad0e380a0c364d142383f88989088329f",
-				"dweb:/ipfs/QmUZGS67Unsja7asMsFmu2YdLzomP4Det7DNMiJNiX8afB"
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
+				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"contracts/Governance/Reputation.sol": {
+			"keccak256": "0x17801c8e49fec78a45f4817244b01f2ad58a8e33e3710e247b262c23d1fa311e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://89d85de36f046ebdb454a9252b9d2f6605fea57fbc216c97af0cd41c50383e9a",
+				"dweb:/ipfs/QmUWGzYN95EAAjsT2EXSsPPAwR4rwLFJwdPtTnJLS6vejR"
 			]
 		},
 		"contracts/interfaces/IUserIdentity.sol": {
-			"keccak256": "0x557812a5b69c45863271065189ee59f7971d3319ae85cd405aaa4d10ce2584bf",
+			"keccak256": "0x399447aebe7f9f7327ac34363fc1ee2a37376c8902269a65d4db547af910d61e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e031b5b5cbfcf6a17226193fb2d0dd7be9d68ce8a90b07b1caa5356e45618653",
-				"dweb:/ipfs/QmYCKEMSbB8oLkv9KbHE5FVd33MNF3XDXUG7bkPj9RRCET"
+				"bzz-raw://1f747a66f0a3afd669f6a11d23dbb15578a419c0aa8f762f488f8707bbc47e9c",
+				"dweb:/ipfs/QmXuxohCgU9jmJKL8nrXYyEyEpEDLto9S2AgjKhxYGrxL7"
 			]
 		}
 	},

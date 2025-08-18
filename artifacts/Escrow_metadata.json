@@ -228,46 +228,13 @@
 			}
 		],
 		"devdoc": {
-			"details": "This contract acts as a neutral third party to hold funds for a specific project. It is created by a Project contract when a freelancer is hired. Its logic is simple and focused: receive funds, hold them, and release them only upon proper authorization or after a dispute resolution.",
 			"kind": "dev",
-			"methods": {
-				"fund()": {
-					"details": "This function uses `transferFrom`, meaning the depositor must have first      called `approve` on the token contract to allow this Escrow contract      to pull the funds from their wallet."
-				},
-				"release()": {
-					"details": "This function can only be called by the depositor (owner), which in our      system is triggered by the `acceptWork` function in the Project contract."
-				},
-				"resolveDispute(address)": {
-					"params": {
-						"winner": "The address of the party who won the dispute."
-					}
-				},
-				"setDisputeResolver(address)": {
-					"details": "This is a critical step that connects the escrow to the platform's judiciary system.      It can only be set once."
-				}
-			},
-			"title": "Escrow",
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"fund()": {
-					"notice": "The first step where the project owner funds the escrow."
-				},
-				"lockForDispute()": {
-					"notice": "Locks the funds if a dispute is raised in the Project contract."
-				},
-				"release()": {
-					"notice": "Releases the funds to the beneficiary (freelancer)."
-				},
-				"resolveDispute(address)": {
-					"notice": "The final resolution of a dispute, called only by the official DisputeResolution contract."
-				},
-				"setDisputeResolver(address)": {
-					"notice": "Allows the depositor to set the address of the DisputeResolution contract."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -296,11 +263,11 @@
 			]
 		},
 		"contracts/core/Escrow.sol": {
-			"keccak256": "0xedd7fddeb82b0508983d70b7351a5947ed44c095011d19e90862713f08d27fe4",
+			"keccak256": "0xf98b2df25fc12be12072834065f4fbf21994831c5e7b2b18b450863916c8dd83",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9f76c21afff1c3af497db1dc7c9d7699c85f42cda6c6f2f300dd871ef6f1ece5",
-				"dweb:/ipfs/QmbnaNe1j3sMpdLmZkcsJthd3fsoVjqjajMyrofGcH2UBp"
+				"bzz-raw://62f6fe568c4c89deb98b67c7a35817f8aa28189a6e967b751d257d2cecdd10e2",
+				"dweb:/ipfs/QmUfijtwGcZv8BLYNcVeRKzarxHj6mHRe66nTvK8zDXJ8i"
 			]
 		}
 	},

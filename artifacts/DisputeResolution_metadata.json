@@ -175,11 +175,6 @@
 				"name": "disputes",
 				"outputs": [
 					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
 						"internalType": "address",
 						"name": "escrowContract",
 						"type": "address"
@@ -263,11 +258,6 @@
 			},
 			{
 				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_disputeId",
-						"type": "uint256"
-					},
 					{
 						"internalType": "address",
 						"name": "_escrowContract",
@@ -423,19 +413,19 @@
 			]
 		},
 		"contracts/Governance/DisputeResolution.sol": {
-			"keccak256": "0xb612539af19cee373c0d7887bb337013bd99366007a052b65715e6309ca19aab",
+			"keccak256": "0xdc94e60b777fbd763d8c91eb933f6796013f570be4171507c14432347cb7ca5e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://27a0e52ea194bfefd7e361d02f42c1e70cd74cac333c98f0d70b7314875a3740",
-				"dweb:/ipfs/QmZ6193PqaWoAcUJU76c5hMyUDfz2N3Dqovn27HnksJEYw"
+				"bzz-raw://6f4b7c4c83649ae4667898f0b6c42c7c8747619e9c9602f3b349ce9215659083",
+				"dweb:/ipfs/QmSYMtJiJBzGRnKYeBjzpRPLuMBmFvyMw4fFPzB7nDVDsS"
 			]
 		},
 		"contracts/core/Escrow.sol": {
-			"keccak256": "0x73329b4367ec897a7d93e1e80846525e220403d8939b427a1faa7457e0ab21fb",
+			"keccak256": "0xf98b2df25fc12be12072834065f4fbf21994831c5e7b2b18b450863916c8dd83",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d09d75afd25be8c17c16a61807e7d167d582ee6759dbb758d4685cd4c372b598",
-				"dweb:/ipfs/QmQsedWYqL7yxjY86gs1NtGLJBkzb8nXJRHsJe5vejS1Qy"
+				"bzz-raw://62f6fe568c4c89deb98b67c7a35817f8aa28189a6e967b751d257d2cecdd10e2",
+				"dweb:/ipfs/QmUfijtwGcZv8BLYNcVeRKzarxHj6mHRe66nTvK8zDXJ8i"
 			]
 		}
 	},

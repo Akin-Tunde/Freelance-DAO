@@ -135,42 +135,13 @@
 			}
 		],
 		"devdoc": {
-			"details": "A factory contract responsible for creating and deploying new Project contracts. This pattern keeps the core logic consistent for all projects and allows the platform to track every project created in the ecosystem.",
 			"kind": "dev",
-			"methods": {
-				"constructor": {
-					"params": {
-						"_governanceAddress": "The address of the main Governance contract."
-					}
-				},
-				"createProject(string,string,uint256,address)": {
-					"params": {
-						"_budget": "The total budget for the project in the smallest unit of the token.",
-						"_description": "A brief description of the project scope.",
-						"_title": "The title of the project.",
-						"_tokenAddress": "The address of the ERC20 token to be used for payment."
-					},
-					"returns": {
-						"_0": "The address of the newly created Project contract."
-					}
-				}
-			},
-			"title": "ProjectFactory",
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"createProject(string,string,uint256,address)": {
-					"notice": "Deploys a new Project contract with the given parameters."
-				},
-				"getDeployedProjects()": {
-					"notice": "Retrieves the list of all project addresses created by this factory."
-				},
-				"setGovernanceAddress(address)": {
-					"notice": "Allows governance to update its own address if it ever needs to be migrated."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -223,19 +194,19 @@
 			]
 		},
 		"contracts/core/Project.sol": {
-			"keccak256": "0x088ad24d85d54de50aee0f9e175d1a919c009f2ebf07d38b2176da26bdf8879f",
+			"keccak256": "0xdc723de5e46d26184050652a65a5c7a629f87b13384e170944174baa01009761",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8b3873f21c0be71ae87dc363de77bebbf1eb1e0c093a29e76b711ca88b375d6b",
-				"dweb:/ipfs/QmQD1TcdUnmKZbsLn1xgog1vMNzdm8J8JvG6dTDgApGr8U"
+				"bzz-raw://fa9c8f666dc9b351f6b9c89340df1a984a25606f8dfbf5d7e795e70a45b8f65b",
+				"dweb:/ipfs/QmPEgD3LdQurN4e4YMKQ2hR5DULew2u3jW3Ak4BDaSexVp"
 			]
 		},
 		"contracts/core/ProjectFactory.sol": {
-			"keccak256": "0x124324157f84c9e3f4641a47b2188450c6cb3efa222c2cc2412620864f2fe97d",
+			"keccak256": "0xe09fad5de737d2fcf30133652d98f79bf6ebdeae73265d7c4f8886a735f86fc1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9e3f824c871403e0161df40fdaae6521713ba6fcac192effe2fe6d35679855fa",
-				"dweb:/ipfs/QmbB2YffaY7UUnnWXF58U2RCmBqbCP8mMogYuLA8eC6Fxn"
+				"bzz-raw://3231c845f82d03d9473d08c9c1aa7e7d14310630260399b9dedd91c2e0f36a84",
+				"dweb:/ipfs/Qmbp6SUNT7aUXUfq56xsaVihu5JtCntPMnoKeYipy954U2"
 			]
 		},
 		"contracts/utils/Proposal.sol": {

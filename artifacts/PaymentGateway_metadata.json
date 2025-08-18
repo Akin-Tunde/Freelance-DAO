@@ -284,7 +284,6 @@
 			}
 		],
 		"devdoc": {
-			"details": "This contract is responsible for collecting platform fees from transactions, such as when an Escrow contract successfully releases funds. It is owned by the DAO/governance, which can update the fee percentage and the recipient address.",
 			"errors": {
 				"OwnableInvalidOwner(address)": [
 					{
@@ -299,66 +298,21 @@
 			},
 			"kind": "dev",
 			"methods": {
-				"constructor": {
-					"params": {
-						"_initialFeeBps": "The initial platform fee in basis points.",
-						"_initialFeeRecipient": "The initial address for the treasury.",
-						"initialOwner": "The address of the DAO's Timelock or multisig."
-					}
-				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
 				},
-				"setCallerAuthority(address,bool)": {
-					"details": "Can only be called by governance. This is a security measure to ensure only      trusted system contracts can trigger fee collection.",
-					"params": {
-						"_authorized": "The authorization status.",
-						"_caller": "The address of the contract to authorize/de-authorize."
-					}
-				},
-				"setFeeBps(uint256)": {
-					"params": {
-						"_newFeeBps": "The new fee in basis points."
-					}
-				},
-				"setFeeRecipient(address)": {
-					"params": {
-						"_newRecipient": "The new address for the fee recipient."
-					}
-				},
-				"takeFee(address,address,uint256)": {
-					"params": {
-						"_from": "The address holding the funds (e.g., the Escrow contract).",
-						"_token": "The address of the token being used for payment.",
-						"_totalAmount": "The total project budget from which the fee is calculated."
-					}
-				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
-			"title": "PaymentGateway",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"setCallerAuthority(address,bool)": {
-					"notice": "Authorizes or de-authorizes a contract to call the `takeFee` function."
-				},
-				"setFeeBps(uint256)": {
-					"notice": "Updates the platform fee. Can only be called by governance."
-				},
-				"setFeeRecipient(address)": {
-					"notice": "Updates the treasury address. Can only be called by governance."
-				},
-				"takeFee(address,address,uint256)": {
-					"notice": "Called by an authorized contract (e.g., Escrow) to take the platform fee."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -403,11 +357,11 @@
 			]
 		},
 		"contracts/Financial/PaymentGateway.sol": {
-			"keccak256": "0x35f3bd8a96e90d9639f73c074be8883d1de89ad65ff8cb08d0e8a04835b1dc81",
+			"keccak256": "0x2e6d53ecc2a3ea2d61714ae0ef47ada4c7571a40df326817d581b3bac4ba0400",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a8e403d8709a09ce967dd17025de60b0e05611d6b929a218ca34e564b1f063dc",
-				"dweb:/ipfs/QmUTLwE3SAzdBiRYDVpaQH6g5LaxFaQzkoxy5SWRyrZqmT"
+				"bzz-raw://956d9d935613947565fadd8e58450abcc10f0e4986a4ce5a964e062f6514929a",
+				"dweb:/ipfs/QmVpsvdhY2XGsvkGRJqTwdMQSBiAqBEKY9Xo1LpkrZzc6S"
 			]
 		}
 	},

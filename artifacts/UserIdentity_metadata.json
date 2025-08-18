@@ -389,8 +389,6 @@
 			}
 		],
 		"devdoc": {
-			"author": "The Architect Team",
-			"details": "This contract serves as the central registry for all user profiles on the platform. It manages usernames, skills, reputation, and project history. It is Ownable so that authorized contract addresses can be set by a governance process.",
 			"errors": {
 				"OwnableInvalidOwner(address)": [
 					{
@@ -405,76 +403,21 @@
 			},
 			"kind": "dev",
 			"methods": {
-				"constructor": {
-					"details": "Sets the initial owner of the contract. The owner is responsible for setting      the initial authorized contract addresses.",
-					"params": {
-						"initialOwner": "The address of the deployer, DAO, or multisig wallet."
-					}
-				},
-				"createProfile(string,string,bytes)": {
-					"details": "A user can only create one profile. Usernames must be unique.",
-					"params": {
-						"_ipfsPortfolioHash": "An IPFS CID pointing to detailed portfolio information.",
-						"_skills": "A comma-separated string of skills.",
-						"_username": "A unique name for the profile."
-					}
-				},
-				"incrementProjectsCompleted(address)": {
-					"details": "Can only be called by the designated project authority contract."
-				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
 				},
-				"setProjectAuthority(address)": {
-					"details": "Can only be called by the owner (governance)."
-				},
-				"setReputationContract(address)": {
-					"details": "Can only be called by the owner (governance)."
-				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
-				},
-				"updateProfile(string,bytes)": {
-					"params": {
-						"_ipfsPortfolioHash": "The user's updated IPFS portfolio CID.",
-						"_skills": "The user's updated skills string."
-					}
-				},
-				"updateReputation(address,uint256)": {
-					"details": "Can only be called by the official Reputation contract."
 				}
 			},
-			"title": "UserIdentity",
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"createProfile(string,string,bytes)": {
-					"notice": "Allows a new user to create their on-chain profile."
-				},
-				"getProfile(address)": {
-					"notice": "Public function to retrieve a user's profile."
-				},
-				"incrementProjectsCompleted(address)": {
-					"notice": "Increments a user's completed project count."
-				},
-				"setProjectAuthority(address)": {
-					"notice": "Sets the address of the contract authorized to confirm project completions."
-				},
-				"setReputationContract(address)": {
-					"notice": "Sets the address of the Reputation contract."
-				},
-				"updateProfile(string,bytes)": {
-					"notice": "Allows a user to update their mutable profile information."
-				},
-				"updateReputation(address,uint256)": {
-					"notice": "Updates a user's reputation score."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -511,11 +454,11 @@
 			]
 		},
 		"contracts/core/UserIdentity.sol": {
-			"keccak256": "0x079bfcbfa8243cad252d30ee0d021f133cb802857cb4daa40d221153e81cfdfe",
+			"keccak256": "0x75e34d6328a339e64b2592e0404f3b9dea2bd250b9201f180fa2ac79ef5ffe2b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d130b845c871c415a2e6cb9bae21a1ca4b67a8bffb456ee8ef9dbbfde9a17c7f",
-				"dweb:/ipfs/Qmb67H5qrMWcGRnn3qtrqLStsZwYDmtXwcVLWmEA52mMZt"
+				"bzz-raw://641e155554d0bfc375fbd449735738e0f9085e5a3a40b6353c85237f520e0bf9",
+				"dweb:/ipfs/QmYzqBU9GfunoFkk7qgJk6gZMwpJm2cLC9uB1gscNM99LM"
 			]
 		},
 		"contracts/interfaces/IUserIdentity.sol": {

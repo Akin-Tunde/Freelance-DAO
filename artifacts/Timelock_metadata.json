@@ -1145,7 +1145,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Governance/TimelockController.sol": "Timelock"
+			"contracts/Governance/Timelock.sol": "Timelock"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -1255,12 +1255,12 @@
 				"dweb:/ipfs/QmadRjHbkicwqwwh61raUEapaVEtaLMcYbQZWs9gUkgj3u"
 			]
 		},
-		"contracts/Governance/TimelockController.sol": {
-			"keccak256": "0x5ae305c11acfd873dd9cf4ad9095dd0a7854f4dffe9655be710909e55101163d",
+		"contracts/Governance/Timelock.sol": {
+			"keccak256": "0x488088214f9adcef1a4df139582366863964c7985a3ba304d72df5ffdb9abad3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b4f3a20aa6dd1c376afff79f0e42b5f2043784a98b800e5c6df815052553aeb4",
-				"dweb:/ipfs/QmZLcMBVZ9EYHd3MPzAnLGY4SUjRy5w7jvbPxAhpmPpANc"
+				"bzz-raw://0e7c5c0c2bb308757410bd90e0baa5bf1a710555cf66bcd637210832bda7cadd",
+				"dweb:/ipfs/QmPBwsHswMVG21No85zcWzjJ729qbwwiGECcXBFCohuzb2"
 			]
 		}
 	},
