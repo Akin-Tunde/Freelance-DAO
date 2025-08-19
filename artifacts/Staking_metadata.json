@@ -169,7 +169,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Financial/Staking.sol": "Staking"
+			"contracts/Financial/Staking_flattened.sol": "Staking"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -183,28 +183,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-			"keccak256": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
-			"license": "MIT",
+		"contracts/Financial/Staking_flattened.sol": {
+			"keccak256": "0x4b5083cd6e1cca8122e319d453c2d3d575545391945855629ade5cf8cc531b6e",
 			"urls": [
-				"bzz-raw://5282825a626cfe924e504274b864a652b0023591fa66f06a067b25b51ba9b303",
-				"dweb:/ipfs/QmeCfPykghhMc81VJTrHTC7sF6CRvaA1FXVq2pJhwYp1dV"
-			]
-		},
-		"@openzeppelin/contracts/utils/ReentrancyGuard.sol": {
-			"keccak256": "0x11a5a79827df29e915a12740caf62fe21ebe27c08c9ae3e09abe9ee3ba3866d3",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://3cf0c69ab827e3251db9ee6a50647d62c90ba580a4d7bbff21f2bea39e7b2f4a",
-				"dweb:/ipfs/QmZiKwtKU1SBX4RGfQtY7PZfiapbbu6SZ9vizGQD9UHjRA"
-			]
-		},
-		"contracts/Financial/Staking.sol": {
-			"keccak256": "0x6aa9f8fbd03e1a8dc5a646597c6c14939a90a566b9049a080cdf6e03a2432ea6",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://0d71865fc4c1ea2f78ef458d14305abdae54d6a5a68606f02835b875462ed3fb",
-				"dweb:/ipfs/QmVEt9CruZFf6sYn3QtNBKZX3qkq3tWeW3YuX5vFxdzkGx"
+				"bzz-raw://3e1239385bf4bc8197822b97e745cb5446d1dfe367906130bb8cf9c7d2d82fb0",
+				"dweb:/ipfs/QmefLTAM6PENCA8U4grCvyywhjaHn522hMfbA8GFRTQdy6"
 			]
 		}
 	},

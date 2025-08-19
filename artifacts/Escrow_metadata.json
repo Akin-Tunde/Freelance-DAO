@@ -240,7 +240,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/core/Escrow.sol": "Escrow"
+			"contracts/core/ProjectFactory_flattened.sol": "Escrow"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -254,20 +254,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-			"keccak256": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
-			"license": "MIT",
+		"contracts/core/ProjectFactory_flattened.sol": {
+			"keccak256": "0x06d4d919463eeb0bc8a69a9f909ff4c22827ebe82fdcb3ad5099090ba1a7673a",
 			"urls": [
-				"bzz-raw://5282825a626cfe924e504274b864a652b0023591fa66f06a067b25b51ba9b303",
-				"dweb:/ipfs/QmeCfPykghhMc81VJTrHTC7sF6CRvaA1FXVq2pJhwYp1dV"
-			]
-		},
-		"contracts/core/Escrow.sol": {
-			"keccak256": "0xf98b2df25fc12be12072834065f4fbf21994831c5e7b2b18b450863916c8dd83",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://62f6fe568c4c89deb98b67c7a35817f8aa28189a6e967b751d257d2cecdd10e2",
-				"dweb:/ipfs/QmUfijtwGcZv8BLYNcVeRKzarxHj6mHRe66nTvK8zDXJ8i"
+				"bzz-raw://b6fad9a6aac54a559985fd714a6bd830eb2a3495566e213a8708505480e87103",
+				"dweb:/ipfs/QmRcw5b94PHYGVWmxeFUHsoW9yAqP1MaL1i7Tyhd2qdgq6"
 			]
 		}
 	},

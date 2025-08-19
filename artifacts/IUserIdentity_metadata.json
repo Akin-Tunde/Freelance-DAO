@@ -135,7 +135,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/interfaces/IUserIdentity.sol": "IUserIdentity"
+			"contracts/Governance/Reputation_flattened.sol": "IUserIdentity"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -149,12 +149,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/interfaces/IUserIdentity.sol": {
-			"keccak256": "0x399447aebe7f9f7327ac34363fc1ee2a37376c8902269a65d4db547af910d61e",
-			"license": "MIT",
+		"contracts/Governance/Reputation_flattened.sol": {
+			"keccak256": "0x3e9c2beddb1a21b0e76d7e25b112fa8f17b0a9cbf20c0ca8511a72d8d8ff1eec",
 			"urls": [
-				"bzz-raw://1f747a66f0a3afd669f6a11d23dbb15578a419c0aa8f762f488f8707bbc47e9c",
-				"dweb:/ipfs/QmXuxohCgU9jmJKL8nrXYyEyEpEDLto9S2AgjKhxYGrxL7"
+				"bzz-raw://3687abbb5c94a0ed109d392efc0d9358fb73095352e8978ef3bf5af55c3f9f2c",
+				"dweb:/ipfs/QmdSkbJaNQuwZVRfizVYYmcYmbdufhatUYCq74Uru999Vs"
 			]
 		}
 	},

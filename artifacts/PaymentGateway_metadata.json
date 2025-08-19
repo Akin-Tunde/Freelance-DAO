@@ -318,7 +318,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Financial/PaymentGateway.sol": "PaymentGateway"
+			"contracts/Financial/PaymentGateway_flattened.sol": "PaymentGateway"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -332,36 +332,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/access/Ownable.sol": {
-			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
-			"license": "MIT",
+		"contracts/Financial/PaymentGateway_flattened.sol": {
+			"keccak256": "0x6f61fb623dfc8af12e3f8ba96802b844915e02b0b64151c263c048994cdebb8b",
 			"urls": [
-				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
-				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
-			]
-		},
-		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
-			"keccak256": "0x74ed01eb66b923d0d0cfe3be84604ac04b76482a55f9dd655e1ef4d367f95bc2",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://5282825a626cfe924e504274b864a652b0023591fa66f06a067b25b51ba9b303",
-				"dweb:/ipfs/QmeCfPykghhMc81VJTrHTC7sF6CRvaA1FXVq2pJhwYp1dV"
-			]
-		},
-		"@openzeppelin/contracts/utils/Context.sol": {
-			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
-				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
-			]
-		},
-		"contracts/Financial/PaymentGateway.sol": {
-			"keccak256": "0x2e6d53ecc2a3ea2d61714ae0ef47ada4c7571a40df326817d581b3bac4ba0400",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://956d9d935613947565fadd8e58450abcc10f0e4986a4ce5a964e062f6514929a",
-				"dweb:/ipfs/QmVpsvdhY2XGsvkGRJqTwdMQSBiAqBEKY9Xo1LpkrZzc6S"
+				"bzz-raw://1b68d29e1b4e5f306b30e3efb896764d666e17396db96ea2ffe131705731af14",
+				"dweb:/ipfs/QmW1E3DqRJF6mu1YuyY3f1P3LgFeDV5VpifBnH937Mkohf"
 			]
 		}
 	},

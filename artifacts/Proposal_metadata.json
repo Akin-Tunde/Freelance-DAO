@@ -206,7 +206,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/utils/Proposal.sol": "Proposal"
+			"contracts/core/ProjectFactory_flattened.sol": "Proposal"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -220,28 +220,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/access/Ownable.sol": {
-			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
-			"license": "MIT",
+		"contracts/core/ProjectFactory_flattened.sol": {
+			"keccak256": "0x06d4d919463eeb0bc8a69a9f909ff4c22827ebe82fdcb3ad5099090ba1a7673a",
 			"urls": [
-				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
-				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
-			]
-		},
-		"@openzeppelin/contracts/utils/Context.sol": {
-			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
-				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
-			]
-		},
-		"contracts/utils/Proposal.sol": {
-			"keccak256": "0xb0c826f319c6387fcbb11e6b548ac66c9f03cf893a5740dc73329852d4ad237e",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://9aae37ef9bdeec1609d93aecf6eca7c0a28c572040715c574fe9337954cbf626",
-				"dweb:/ipfs/QmQLrUSdw5nJLtzs8X3rFfvHt5fHtTHsFLSqHA9VTsMnd7"
+				"bzz-raw://b6fad9a6aac54a559985fd714a6bd830eb2a3495566e213a8708505480e87103",
+				"dweb:/ipfs/QmRcw5b94PHYGVWmxeFUHsoW9yAqP1MaL1i7Tyhd2qdgq6"
 			]
 		}
 	},

@@ -231,7 +231,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Governance/Reputation.sol": "Reputation"
+			"contracts/Governance/Reputation_flattened.sol": "Reputation"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -245,36 +245,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/access/Ownable.sol": {
-			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
-			"license": "MIT",
+		"contracts/Governance/Reputation_flattened.sol": {
+			"keccak256": "0x3e9c2beddb1a21b0e76d7e25b112fa8f17b0a9cbf20c0ca8511a72d8d8ff1eec",
 			"urls": [
-				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
-				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
-			]
-		},
-		"@openzeppelin/contracts/utils/Context.sol": {
-			"keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
-				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
-			]
-		},
-		"contracts/Governance/Reputation.sol": {
-			"keccak256": "0x17801c8e49fec78a45f4817244b01f2ad58a8e33e3710e247b262c23d1fa311e",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://89d85de36f046ebdb454a9252b9d2f6605fea57fbc216c97af0cd41c50383e9a",
-				"dweb:/ipfs/QmUWGzYN95EAAjsT2EXSsPPAwR4rwLFJwdPtTnJLS6vejR"
-			]
-		},
-		"contracts/interfaces/IUserIdentity.sol": {
-			"keccak256": "0x399447aebe7f9f7327ac34363fc1ee2a37376c8902269a65d4db547af910d61e",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://1f747a66f0a3afd669f6a11d23dbb15578a419c0aa8f762f488f8707bbc47e9c",
-				"dweb:/ipfs/QmXuxohCgU9jmJKL8nrXYyEyEpEDLto9S2AgjKhxYGrxL7"
+				"bzz-raw://3687abbb5c94a0ed109d392efc0d9358fb73095352e8978ef3bf5af55c3f9f2c",
+				"dweb:/ipfs/QmdSkbJaNQuwZVRfizVYYmcYmbdufhatUYCq74Uru999Vs"
 			]
 		}
 	},
